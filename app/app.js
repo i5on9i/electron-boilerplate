@@ -2,11 +2,18 @@
 // All stuff below is just to show you how it works. You can delete all of it.
 
 // Use new ES6 modules syntax for everything.
+// In bundle.js, rollup option 'cjs' makes ES6 codes to CommonJs
 import os from 'os'; // native node.js module
 import { remote } from 'electron'; // native electron module
 import jetpack from 'fs-jetpack'; // module loaded from npm
 import { greet } from './hello_world/hello_world'; // code authored by you in this project
 import env from './env';
+
+
+import {render} from 'react-dom';
+import {createElement} from 'react';
+import {bye, EconomistCrawler} from './crlr/ecnmst';
+
 
 console.log('Loaded environment variables:', env);
 
@@ -21,4 +28,12 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('greet').innerHTML = greet();
     document.getElementById('platform-info').innerHTML = os.platform();
     document.getElementById('env-name').innerHTML = env.name;
+    
+    bye();
+    var a = new EconomistCrawler({});
+    
+    render(createElement(a, null), document.getElementById('container'));
+
+    
+    
 });

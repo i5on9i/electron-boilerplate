@@ -25,6 +25,9 @@ var generateExternalModulesList = function () {
 module.exports = function (src, dest) {
     var deferred = Q.defer();
 
+
+    // rollup options :
+    //  https://github.com/rollup/rollup/wiki/Command-Line-Interface
     rollup.rollup({
         entry: src,
         external: generateExternalModulesList(),

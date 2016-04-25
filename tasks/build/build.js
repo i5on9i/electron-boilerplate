@@ -9,6 +9,9 @@ var batch = require('gulp-batch');
 var plumber = require('gulp-plumber');
 var jetpack = require('fs-jetpack');
 
+const babel = require('gulp-babel');
+
+
 var bundle = require('./bundle');
 var generateSpecImportsFile = require('./generate_spec_imports');
 var utils = require('../utils');
@@ -22,7 +25,8 @@ var paths = {
         './node_modules/**',
         './helpers/**',
         './**/*.html',
-        './**/*.+(jpg|png|svg)'
+        './**/*.+(jpg|png|svg)',
+        './crlr/*.js'
     ],
 };
 
@@ -116,4 +120,17 @@ gulp.task('watch', function () {
 });
 
 
-gulp.task('build', ['bundle', 'less', 'copy', 'finalize']);
+
+/**
+ * jsx
+ */
+gulp.task('jsx-transform', () =>
+    
+    gulp.src('app/crlr/jsx/*.jsx')
+        .pipe(babel({
+            presets: ['react']
+        }))
+        .pipe(gulp.dest('app/crlr/'))
+);
+
+gulp.task('build', ['jsx-transform', 'bundle', 'less', 'copy', 'finalize']);
