@@ -10,8 +10,8 @@ import { greet } from './hello_world/hello_world'; // code authored by you in th
 import env from './env';
 
 
-import {render} from 'react-dom';
-import {createElement} from 'react';
+import ReactDOM from 'react-dom';
+import React from 'react';
 import {bye, EconomistCrawler} from './crlr/ecnmst';
 
 
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
     bye();
     var a = new EconomistCrawler({});
     
-    render(createElement(a, null), document.getElementById('container'));
+    ReactDOM.render(React.createElement(EconomistCrawler, null), document.getElementById('ecnmst_container'));
 
     
     

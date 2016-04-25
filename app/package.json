@@ -3,8 +3,8 @@
   "productName": "Electron Boilerplate",
   "description": "Starter for your Electron application. Out of the box ready for serious stuff.",
   "version": "0.1.0",
-  "author": "Mr Gumby",
-  "copyright": "© 2016, your company here",
+  "author": "Namh",
+  "copyright": "© 2016, Namh",
   "main": "background.js",
   "dependencies": {
     "fs-jetpack": "^0.7.0",
